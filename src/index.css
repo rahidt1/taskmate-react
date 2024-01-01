@@ -112,6 +112,8 @@ header {
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
+  /* max-width: 1200px;
+  margin: 0 auto; */
 }
 
 header .logo {
@@ -194,14 +196,14 @@ header .themeSelector .activeTheme {
   box-shadow: var(--box-shadow);
 }
 
-.showTask p.head {
+.showTask .head {
   padding: 10px 0px 20px 0px;
   border-bottom: 1px solid #dfdfdf;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
 }
 
-.showTask p.head span:first-child {
+.showTask .head span:first-child {
   flex-grow: 1;
 }
 
@@ -225,6 +227,7 @@ header .themeSelector .activeTheme {
   color: #ffffff;
   padding: 5px 10px;
   border-radius: 5px;
+  border: none;
   cursor: pointer;
 }
 
