@@ -1,4 +1,8 @@
 export function ShowTask({ taskList, setTaskList }) {
+  function handleDelete(id) {
+    setTaskList((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <section className="showTask">
       <div className="head">
@@ -20,7 +24,10 @@ export function ShowTask({ taskList, setTaskList }) {
               <span className="time">{task.time}</span>
             </p>
             <i className="bi bi-pencil-square"></i>
-            <i className="bi bi-trash"></i>
+            <i
+              className="bi bi-trash"
+              onClick={() => handleDelete(task.id)}
+            ></i>
           </li>
         ))}
       </ul>
