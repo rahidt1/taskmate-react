@@ -1,40 +1,19 @@
-import { useState } from "react";
-import { isWhiteSpaceString } from "../utils/utils";
-
-export function AddTask({ onAddTask }) {
-  const [name, setName] = useState("");
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (!name || isWhiteSpaceString(name)) return;
-
-    const date = new Date();
-
-    const newTask = {
-      id: date.getTime(),
-      name: name,
-      time: `${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
-    };
-
-    onAddTask(newTask);
-
-    setName(""); //Clear input field
-  }
-
+export function AddTask({ singleTask, setSingleTask, onSubmit }) {
   return (
     <section className="addTask">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={singleTask.name || ""}
+          onChange={(e) =>
+            setSingleTask({ ...singleTask, name: e.target.value })
+          }
           name="task"
           placeholder="add task"
           maxLength={25}
           autoComplete="off"
         />
-        <button type="submit">Add</button>
+        <button type="submit">{singleTask.id ? "Update" : "Add"}</button>
       </form>
     </section>
   );

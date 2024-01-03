@@ -1,4 +1,4 @@
-export function ShowTask({ taskList, setTaskList, onDelete }) {
+export function ShowTask({ taskList, setTaskList, onDelete, onEdit }) {
   return (
     <section className="showTask">
       <div className="head">
@@ -19,7 +19,10 @@ export function ShowTask({ taskList, setTaskList, onDelete }) {
               <span className="name">{task.name}</span>
               <span className="time">{task.time}</span>
             </p>
-            <i className="bi bi-pencil-square"></i>
+            <i
+              className="bi bi-pencil-square"
+              onClick={() => onEdit(task.id)}
+            ></i>
             <i className="bi bi-trash" onClick={() => onDelete(task.id)}></i>
           </li>
         ))}
