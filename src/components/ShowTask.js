@@ -14,7 +14,7 @@ export function ShowTask({ taskList, setTaskList }) {
 
       <ul>
         {taskList.map((task) => (
-          <li>
+          <li key={task.id}>
             <p>
               <span className="name">{task.name}</span>
               <span className="time">{task.time}</span>
