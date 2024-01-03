@@ -13,11 +13,25 @@ function App() {
     { id: 10003, name: "Task C", time: "2:09:01 AM 9/14/2023" },
   ]);
 
+  // Add Task
+  function handleAddTask(newTask) {
+    setTaskList((tasks) => [...tasks, newTask]);
+  }
+
+  // Delete Task
+  function handleDelete(id) {
+    setTaskList((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <div className="App">
       <Header />
-      <AddTask setTaskList={setTaskList} />
-      <ShowTask taskList={taskList} setTaskList={setTaskList} />
+      <AddTask onAddTask={handleAddTask} />
+      <ShowTask
+        taskList={taskList}
+        setTaskList={setTaskList}
+        onDelete={handleDelete}
+      />
     </div>
   );
 }

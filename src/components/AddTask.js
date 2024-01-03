@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { isWhiteSpaceString } from "../utils/utils";
 
-export function AddTask({ setTaskList }) {
+export function AddTask({ onAddTask }) {
   const [name, setName] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!name || isWhiteSpaceString(name)) return;
 
     const date = new Date();
 
@@ -14,7 +17,7 @@ export function AddTask({ setTaskList }) {
       time: `${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
     };
 
-    setTaskList((tasks) => [...tasks, newTask]); //Add new task
+    onAddTask(newTask);
 
     setName(""); //Clear input field
   }
