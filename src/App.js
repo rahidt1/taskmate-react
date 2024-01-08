@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from "./components/Header";
 import { AddTask } from "./components/AddTask";
@@ -8,13 +8,14 @@ import "./App.css";
 import { isWhiteSpaceString } from "./utils/utils";
 
 function App() {
-  const [taskList, setTaskList] = useState([
-    { id: 10001, name: "Task A", time: "2:09:01 AM 9/14/2023" },
-    { id: 10002, name: "Task B", time: "2:09:01 AM 9/14/2023" },
-    { id: 10003, name: "Task C", time: "2:09:01 AM 9/14/2023" },
-  ]);
-
+  const [taskList, setTaskList] = useState(
+    JSON.parse(localStorage.getItem("taskList")) || []
+  );
   const [singleTask, setSingleTask] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  }, [taskList]);
 
   // Add Task
   function handleAddTask(newTask) {
