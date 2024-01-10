@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+Simple task manager built with React to manage task. It has edit,delete and theme change features.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### TaskMate App
+
+![Screenshot](./public/Screenshot.png)
 
 ## Available Scripts
 
